@@ -47,6 +47,17 @@ echo -e "${GREEN}✔ USB Microphone found on Card $MIC_CARD.${NC}"
 print_section "Installing Core Dependencies..."
 sudo apt update && sudo apt install -y sox libsox-fmt-all python3-venv python3-pip unzip curl alsa-utils wget jq
 
+# --- 2.5 Virtual Environment Setup ---
+print_section "Creating Python Virtual Environment..."
+if [ ! -d "venv" ]; then
+    python3 -m venv venv
+    ./venv/bin/pip install --upgrade pip
+    ./venv/bin/pip install vosk
+    echo -e "${GREEN}✔ Virtual environment created and Vosk installed.${NC}"
+else
+    echo -e "${GREEN}✔ Virtual environment already exists.${NC}"
+fi
+
 # --- 3. PulseAudio Strategy (Adaptive) ---
 print_section "Audio Server Management"
 if [ "$IS_PI" = true ]; then
