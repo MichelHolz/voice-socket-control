@@ -1,0 +1,18 @@
+# AI Models (folders starting with vosk-model)
+vosk-model-*/
+
+# Python Virtual Environment
+venv/
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Local Configuration & Temp files
+.active_model
+noise.prof
+*.wav
+*.log
+
+# OS generated files
+.DS_Store
